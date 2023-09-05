@@ -226,9 +226,3 @@ p.movie-not-found {
   width: 60%;
   text-align: center;
 }
-
-@media (max-width: 480px) {
-  body {
-    font-size: 10px;
-  }
-}
