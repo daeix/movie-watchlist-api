@@ -55,6 +55,7 @@ input.search,
 input.search {
   width: 50%;
   max-width: 305px;
+  border-radius: none;
 }
 
 button.search-btn {
@@ -227,8 +228,8 @@ p.movie-not-found {
   text-align: center;
 }
 
-@media(max-width:480px){
-  body{
-    font-size:12px
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
   }
 }
