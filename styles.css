@@ -55,7 +55,7 @@ input.search,
 input.search {
   width: 50%;
   max-width: 305px;
-  border-radius: none;
+  border-radius: 0;
 }
 
 button.search-btn {
