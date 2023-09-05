@@ -15,7 +15,7 @@ if (searchBtn) {
 // renders searched movies from API
 function getSearchedMovies(e) {
   e.preventDefault()
-  fetch(`http://www.omdbapi.com/?apikey=8e62b52d&s=${searchInput.value}`)
+  fetch(`https://www.omdbapi.com/?apikey=8e62b52d&s=${searchInput.value}`)
     .then((res) => res.json())
     .then((data) => {
       if (data.Search) {
@@ -31,7 +31,7 @@ function getSearchedMovies(e) {
     })
     .then(() => {
       for (let i = 0; i < imdbIDArray.length; i++) {
-        fetch(`http://www.omdbapi.com/?apikey=8e62b52d&i=${imdbIDArray[i]}`)
+        fetch(`https://www.omdbapi.com/?apikey=8e62b52d&i=${imdbIDArray[i]}`)
           .then((res) => res.json())
           .then((data) => {
             imdbIDArray = []
@@ -85,7 +85,7 @@ const watchlistContainer = document.getElementById("watchlist-list")
 function getWatchlist() {
   if (watchlistContainer) {
     for (let i = 0; i < watchlist.length; i++) {
-      fetch(`http://www.omdbapi.com/?apikey=8e62b52d&i=${watchlist[i]}`)
+      fetch(`https://www.omdbapi.com/?apikey=8e62b52d&i=${watchlist[i]}`)
         .then((res) => res.json())
         .then((data) => {
           littleEmpty.style.display = "none"
