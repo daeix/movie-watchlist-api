@@ -7,10 +7,7 @@ const littleEmpty = document.getElementById("little-empty")
 let imdbIDArray = []
 let moviesById = []
 
-// if statement only to avoid error after clicking "my watchlist"
-if (searchBtn) {
-  searchBtn.addEventListener("click", getSearchedMovies)
-}
+searchBtn.addEventListener("click", getSearchedMovies)
 
 // renders searched movies from API
 function getSearchedMovies(e) {
@@ -78,54 +75,3 @@ function addToWatchlist(btnID) {
     localStorage.setItem("watchlist", JSON.stringify(watchlist))
   }
 }
-
-const watchlistContainer = document.getElementById("watchlist-list")
-
-// renders watchlist
-function getWatchlist() {
-  if (watchlistContainer) {
-    for (let i = 0; i < watchlist.length; i++) {
-      fetch(`https://www.omdbapi.com/?apikey=8e62b52d&i=${watchlist[i]}`)
-        .then((res) => res.json())
-        .then((data) => {
-          littleEmpty.style.display = "none"
-          watchlistContainer.innerHTML += `<div class="flex-container-movie">
-            <img src="${data.Poster}" />
-            <div class="flex-container">
-              <div class="cont title-rating">
-                <p class="movie-title">${data.Title}</p>
-                <p class="rating">
-                  <i class="fa-solid fa-star" style="color: #fec654"></i> ${data.imdbRating}
-                </p>
-              </div>
-              <div class="cont time-genre">
-                <p class="movie-time">${data.Runtime}</p>
-                <p class="genre">${data.Genre}</p>
-                <button onclick="removeFromWatchlist(this.id)" id="${data.imdbID}" class="watchlist">
-                  <i class="fa-solid fa-circle-minus" style="color: orangered"></i>
-                  Remove
-                </button>
-              </div>
-              <p class="description">
-                ${data.Plot}
-              </p>
-            </div>
-          </div>
-          <div class="divider"></div> 
-            `
-        })
-    }
-  }
-}
-
-// removes movie from watchlist and local storage
-function removeFromWatchlist(btnID) {
-  let index = watchlist.indexOf(btnID)
-  if (index >= 0) {
-    watchlist.splice(index, 1)
-    localStorage.setItem("watchlist", JSON.stringify(watchlist))
-    location.reload()
-  }
-}
-
-getWatchlist()
